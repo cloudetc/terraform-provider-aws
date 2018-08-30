@@ -140,7 +140,7 @@ func resourceAwsSagemakerEndpointConfigurationRead(d *schema.ResourceData, meta 
 
 	endpointConfig, err := conn.DescribeEndpointConfig(request)
 	if err != nil {
-		if sagemakerErr, ok := err.(awserr.Error); ok && sagemakerErr.Code() == "ResourceNotFound" {
+		if sagemakerErr, ok := err.(awserr.Error); ok && sagemakerErr.Code() == "ValidationException" {
 			d.SetId("")
 			return nil
 		}
