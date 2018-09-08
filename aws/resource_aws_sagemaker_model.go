@@ -140,7 +140,7 @@ func resourceAwsSagemakerModelRead(d *schema.ResourceData, meta interface{}) err
 
 	model, err := conn.DescribeModel(request)
 	if err != nil {
-		if sagemakerErr, ok := err.(awserr.Error); ok && sagemakerErr.Code() == "ResourceNotFound" {
+		if sagemakerErr, ok := err.(awserr.Error); ok && sagemakerErr.Code() == "ValidationException" {
 			d.SetId("")
 			return nil
 		}
